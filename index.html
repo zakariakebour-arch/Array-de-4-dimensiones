@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorrer array de 4 Dimensiones</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(320deg,green,rgb(80, 244, 80));
+        }
+        main{
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 20px;
+        }
+        article{
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        article:hover{
+            transform: scale(1.1);
+            transition: 0.3s ease;
+            box-shadow: 2px 2px 10px gainsboro;
+        }
+    </style>
+</head>
+<body>
+    <main></main>
+    <script>
+        const contenedor_padre = document.querySelector("main");
+        const datos = [
+        [
+            [
+                [1, 2, 3],
+                [4, 5, 6]
+            ],
+            [
+                [7, 8],
+                [9, 10]
+            ]
+        ],
+        [
+            [
+                ["a", "b", "c"],
+                ["d", "e", "f"]
+            ],
+            [
+                ["g", "h"],
+                ["i", "j"]
+            ]
+        ]
+        ];
+        datos.forEach((primero)=>{
+            primero.forEach((segundo)=>{
+                segundo.forEach((tercero)=>{
+                    tercero.forEach((cuarto)=>{
+                        const tarjeta = document.createElement("article");
+                        contenedor_padre.appendChild(tarjeta);
+                        tarjeta.innerHTML = `${cuarto}`;
+                        contenedor_padre.addEventListener("click",(e)=>{
+                            if(e.target.tagName === 'ARTICLE'){
+                                contenedor_padre.removeChild(e.target);
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
